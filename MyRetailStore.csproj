@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\aatiwari\.nuget\packages\haley.mvvm\6.2.19\contentFiles\any\net5.0-windows7.0\Notes.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\backg.png" />
+    <None Remove="Images\benyafez-studio--4wZ0z7zqBY-unsplash.jpg" />
+    <None Remove="Images\icons8-add-new-48.png" />
+    <None Remove="Images\icons8-category-48.png" />
+    <None Remove="Images\icons8-eye-48.png" />
+    <None Remove="Images\icons8-inventory-64.png" />
+    <None Remove="Images\icons8-password-48.png" />
+    <None Remove="Images\icons8-purchase-order-48.png" />
+    <None Remove="Images\icons8-retail-store-64.png" />
+    <None Remove="Images\icons8-shop-64.png" />
+    <None Remove="Images\icons8-supplier-48.png" />
+    <None Remove="Images\icons8-total-sales-64.png" />
+    <None Remove="Images\icons8-user-64.png" />
+    <None Remove="Images\icons8-username-50.png" />
+    <None Remove="Images\img_arrow.png" />
+    <None Remove="Images\img_exit.png" />
+    <None Remove="Images\img_home.png" />
+    <None Remove="Images\Lock.png" />
+    <None Remove="Images\MicrosoftTeams-image %286%29.png" />
+    <None Remove="Images\pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-image_133225.jpg" />
+    <None Remove="Images\retail.png" />
+    <None Remove="Images\retail1.png" />
+    <None Remove="Images\retail2.png" />
+    <None Remove="Images\retail3.png" />
+    <None Remove="Images\shutdown_mo.png" />
+    <None Remove="Images\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\backg.png" />
+    <Resource Include="Images\benyafez-studio--4wZ0z7zqBY-unsplash.jpg" />
+    <Resource Include="Images\icons8-add-new-48.png" />
+    <Resource Include="Images\icons8-category-48.png" />
+    <Resource Include="Images\icons8-eye-48.png" />
+    <Resource Include="Images\icons8-inventory-64.png" />
+    <Resource Include="Images\icons8-purchase-order-48.png" />
+    <Resource Include="Images\icons8-shop-64.png" />
+    <Resource Include="Images\icons8-supplier-48.png" />
+    <Resource Include="Images\icons8-total-sales-64.png" />
+    <Resource Include="Images\icons8-user-64.png" />
+    <Resource Include="Images\img_arrow.png" />
+    <Resource Include="Images\img_exit.png" />
+    <Resource Include="Images\img_home.png" />
+    <Resource Include="Images\Lock.png" />
+    <Resource Include="Images\MicrosoftTeams-image (6).png" />
+    <Resource Include="Images\retail.png" />
+    <Resource Include="Images\retail1.png" />
+    <Resource Include="Images\retail2.png" />
+    <Resource Include="Images\retail3.png" />
+    <Resource Include="Images\shutdown_mo.png" />
+    <Resource Include="Images\User.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+    <PackageReference Include="ModernUICharts.WPF.Beta" Version="0.9.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.29" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\icons8-password-48.png" />
+    <Resource Include="Images\icons8-retail-store-64.png" />
+    <Resource Include="Images\icons8-username-50.png" />
+    <Resource Include="Images\pngtree-shopping-mall-supermarket-selection-merchandise-poster-background-material-image_133225.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
+</Project>
