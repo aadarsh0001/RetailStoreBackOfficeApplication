@@ -1,4 +1,4 @@
-RetailStoreBackoffice Management Using C#/MVVM/WPF/SQL
+# RetailStoreBackoffice Management Using C#/MVVM/WPF/SQL
 With the help of this application you can manage all retailStore Activities Like :-   Supplier Details, Dashboard, Store Details, Inventory, Sales and Purchase Records, User Management etc.<br>
 It's a Small POC Type Project Created By Me And My Team Member Using C#, WPF, MVVM etc.<br>
 Using This small POC, User can handle their Store's Inventory, Store Details, Daily/Weekly Sales and Purchases etc.<br>
