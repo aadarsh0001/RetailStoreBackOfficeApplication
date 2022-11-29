@@ -1,0 +1,56 @@
+﻿<Window x:Class="MyRetailStore.Views.Windows.AddUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:i='http://schemas.microsoft.com/expression/2010/interactivity'
+       xmlns:i1='http://schemas.microsoft.com/expression/2010/interactions'
+        xmlns:components='clr-namespace:MyRetailStore.Views.UserControlView'
+        xmlns:local="clr-namespace:MyRetailStore.Views.Windows"
+        mc:Ignorable="d" Topmost="True"
+        Title="Add New User" Height="420" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height='*' />
+            <RowDefinition Height='auto' />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row='0' Orientation="Vertical" VerticalAlignment="Center" Width="Auto">
+
+
+            <Label Content="Full Name" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <TextBox Width="260"  VerticalContentAlignment="Center" Background="Transparent" BorderBrush="Black" BorderThickness="2" Height="35" Text='{Binding Name, UpdateSourceTrigger=PropertyChanged, Mode=Default}' />
+
+            <Label Content="User Name" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <TextBox Width="260" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="Black" BorderThickness="2" Height="35" Text='{Binding Usrname, UpdateSourceTrigger=PropertyChanged, Mode=Default}' />
+
+            <Label Content="Password" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Border Width="260" Height="35" BorderThickness="2" BorderBrush="Black" >
+                    <Grid>
+                        <components:BindablePasswordBox x:Name="passwordBox" Padding="2 5 2 5"  BorderBrush="Gray"  Password='{Binding Password}' />
+                        <TextBox x:Name="passwordTxtBox"  Height="22" Width="269" VerticalContentAlignment="Center" Visibility="Collapsed" Margin="2 4 2 3"  HorizontalAlignment="Left"  BorderThickness="1"/>
+                        <Button Width="30" Background="Transparent" HorizontalAlignment="Right" IsTabStop="False" VerticalAlignment="Center" BorderThickness="0" Click="Show_Password"  Height="35" >
+                            <Image Source="/Images/icons8-eye-48.png" MouseLeave="Hide_Password" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            <Label Content="Email" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <TextBox Width="260" Background="Transparent" BorderThickness="2" BorderBrush="Black" VerticalContentAlignment="Center" Height="35" Text='{Binding Email, UpdateSourceTrigger=PropertyChanged, Mode=Default}' />
+
+
+           
+
+        </StackPanel>
+        <Button x:Name='save' Grid.Row='1' Content="Save" Width="100" Height="35" FontSize="16" Margin="0 15" BorderThickness='2' BorderBrush='Black' Cursor='Hand' FontWeight="Bold" Command='{Binding SaveCommand}' CommandParameter='saveCommand'>
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i1:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </Button>
+
+    </Grid>
+</Window>

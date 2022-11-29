@@ -1,0 +1,51 @@
+﻿<Window x:Class="MyRetailStore.Views.Windows.UpdateCategoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyRetailStore.Views.Windows" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:i1="http://schemas.microsoft.com/expression/2010/interactions"
+        mc:Ignorable="d" Topmost="True"
+        Title="Update Category Details" Height="380" Width="470" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height='*' />
+            <RowDefinition Height='auto' />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row='0' Orientation="Vertical" VerticalAlignment="Center" Width="Auto">
+
+
+            <Label Content="Category" FontWeight="Bold" FontSize="16" Width="auto" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <TextBox Width="260"  VerticalContentAlignment="Center" Background="Transparent" BorderBrush="Black" BorderThickness="2" Height="35" Text='{Binding SelectedCategory.Itemcategory}' />
+
+
+            <Label Content="Sub Category" FontWeight="Bold" FontSize="16" Width="auto" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <TextBox Width="260" Background="Transparent" BorderThickness="2" BorderBrush="Black" VerticalContentAlignment="Center" Height="35" Text='{Binding SelectedCategory.SubCategory}' />
+            
+            <Label Content="Status" FontWeight="Bold" FontSize="16" Width="auto" HorizontalContentAlignment="Center" Margin="0 3 0 3"/>
+            <ComboBox  Grid.Row="7" Grid.Column="1"  HorizontalAlignment="Center" Width="260" Height="30"
+                       Text='{Binding SelectedCategory.isStatus}'>
+                <ComboBoxItem Content="Active"/>
+                <ComboBoxItem Content="Inactive"/>
+            </ComboBox>
+
+            <Button Content="Save" Width="100" Height="35" FontSize="16" Margin="0 15" BorderThickness='2' BorderBrush='Black' Cursor='Hand' FontWeight="Bold" 
+                    Command='{Binding SaveUpdateCommand}' CommandParameter='{Binding SaveUpdateCommand}'>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i1:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+            
+
+        </StackPanel>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="MyRetailStore.Views.UserControlView.AddStoreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyRetailStore.Views.UserControlView"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Height="40" Content="{Binding LblStoreName, UpdateSourceTrigger=PropertyChanged, Mode=Default}"  FontWeight="Bold" FontSize="26" />
+        <TextBox Grid.Row="1" Height="100" BorderBrush="Gray" Background="LightGray" Text="{Binding LblStoreAddress, UpdateSourceTrigger=PropertyChanged, Mode=Default}" FontSize="22" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" IsReadOnly="True" />
+       
+
+        <Border Grid.Row="2" BorderThickness="0.5" BorderBrush="Blue" Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                    <Label Grid.Row="0" Grid.Column="0" FontWeight="Bold" Content="Store Name"/>
+                    
+                
+                
+                <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding TxtStoreName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                    <Label Grid.Row="1" Grid.Column="0" FontWeight="Bold" Content="Address 1:" />
+                    
+                
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding TxtAddressLineOne, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" FontWeight="Bold" Content="Address 2:"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding TxtAddressLineTwo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                    <Label Grid.Row="3" Grid.Column="0" FontWeight="Bold" Content="City" />
+                   
+                
+               
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TxtAddressCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            
+                    <Label Grid.Row="3" Grid.Column="2" FontWeight="Bold" Content="State" Margin="50 0 0 0" />
+                    
+        
+               
+                <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding TxtAddressState, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               
+                    <Label Grid.Row="4" Grid.Column="0" FontWeight="Bold" Content="Country" />
+
+
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding TxtAddressCountry, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
+                    <Label Grid.Row="4" Grid.Column="2" FontWeight="Bold" Content="Zipcode" Margin="50 0 0 0" />
+                    
+                
+                <TextBox Grid.Row="4" Grid.Column="3" Text="{Binding TxtAddressZipCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </Border>
+        
+        <Button Content="Save" Grid.Row="3" HorizontalAlignment="Right" IsTabStop="False" Margin="5" Padding="5" Height="40" Width="90"  BorderThickness='0.5' BorderBrush='Black' FontWeight='Bold' Cursor='Hand' Command='{Binding SaveStoreCommand}' CommandParameter='savestore'/>
+    </Grid>
+</UserControl>

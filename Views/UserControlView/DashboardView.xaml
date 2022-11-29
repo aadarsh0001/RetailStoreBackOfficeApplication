@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="MyRetailStore.Views.UserControlView.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyRetailStore.Views.UserControlView"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:MyRetailStore.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DashboardViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="530" d:DesignWidth="800" >
+
+
+
+
+    <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
+                <Viewbox  Width="300" Height="60">
+                    <DatePicker VerticalAlignment="Center" HorizontalAlignment="Center"   SelectedDate="{Binding SelectedDateForData,  UpdateSourceTrigger=PropertyChanged}"
+                        BorderBrush="Transparent" Text="{Binding MyCurrentDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                       DisplayDateEnd="{Binding LastDate}" Width="150" >
+
+
+                    </DatePicker>
+
+                </Viewbox>
+
+
+            </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Rectangle Height="200" Margin="20" Fill="White" RadiusY="10" RadiusX="10">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFCF1F1F" RenderingBias="Quality" ShadowDepth="1" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Margin="25" Height="120">
+                    <Grid Width="45" Height="120" Background="#FFCF1F1F" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -40 0 0">
+                        <Grid.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1" />
+                        </Grid.Effect>
+                        <materialDesign:PackIcon Kind="Marketplace" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="30" Height="30" />
+                    </Grid>
+                    <TextBlock Text="Total Purchase" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="0 20 5 0" VerticalAlignment="Top" Foreground="Gray" FontSize="20"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10 20 30 10">
+                        <TextBlock Text="₹" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="30" VerticalAlignment="Bottom" />
+                        <TextBlock Text="{Binding TotalPurchase, UpdateSourceTrigger=PropertyChanged}" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="35" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="20">
+
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="1">
+                <Rectangle Height="200" Margin="20" Fill="White" RadiusY="10" RadiusX="10">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#32B76F" RenderingBias="Quality" ShadowDepth="1" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Margin="25" Height="120">
+                    <Grid Width="45" Height="120" Background="#32B76F" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -40 0 0">
+                        <Grid.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1" />
+                        </Grid.Effect>
+                        <materialDesign:PackIcon Kind="Sale" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="30" Height="30" />
+                    </Grid>
+                    <TextBlock Text="Total Sales" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Champagne &amp; Limousines" Margin="0 25 15 0" Foreground="Gray" FontSize="20" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10 20 30 10">
+                        <TextBlock Text="₹" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="30" VerticalAlignment="Bottom" />
+                        <TextBlock Text="{Binding TotalSales, UpdateSourceTrigger=PropertyChanged}" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="35" />
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="2">
+                <Rectangle Height="200" Margin="20" Fill="White" RadiusY="10" RadiusX="10">
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#388388" RenderingBias="Quality" ShadowDepth="1" />
+                    </Rectangle.Effect>
+                </Rectangle>
+                <Grid Margin="25" Height="120">
+                    <Grid Width="45" Height="120" Background="#388388" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20 -40 0 0">
+                        <Grid.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#FFECECEC" RenderingBias="Quality" ShadowDepth="1" />
+                        </Grid.Effect>
+                        <materialDesign:PackIcon Kind="Material" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5" Foreground="White" Width="30" Height="30" />
+                    </Grid>
+                    <TextBlock Text="Current Stock Valuation" HorizontalAlignment="Right" FontFamily="Champagne &amp; Limousines" Margin="0 25 5 0" VerticalAlignment="Top" Foreground="Gray" FontSize="20" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10 20 30 10">
+                        <TextBlock Text="₹" FontFamily="Champagne &amp; Limousines" Foreground="Gray" FontSize="30" VerticalAlignment="Bottom" />
+                        <TextBlock Text="{Binding TotalValuation, UpdateSourceTrigger=PropertyChanged}" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center" Foreground="Gray" FontSize="35" />
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+
+
+
+
+</UserControl>

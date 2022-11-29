@@ -1,0 +1,88 @@
+﻿<Window x:Class="MyRetailStore.Views.Windows.UpdatePurchaseInvoiceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MyRetailStore.Views.Windows" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:i1="http://schemas.microsoft.com/expression/2010/interactions"
+            mc:Ignorable="d"  Topmost="True"
+             Height="650" Title="Update Purchase Invoice" 
+        Width="1250" Top="160" Left="260" WindowStyle="ToolWindow"
+       
+        >
+    <Grid Background="#f3f6f6" >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" >
+            <Button Content="Add Purchase Item" HorizontalAlignment="Left"  Height="Auto" Width="150" 
+                    Command='{Binding UpdateAddPurchaseItemCommand}' CommandParameter='UpdateAddPurchaseItemCommand'  BorderThickness='0.5' Margin="5 0 5 0" BorderBrush='Black' Cursor='Hand' />
+            <Button Width="132" Height="auto" Content="Save Invoice" Command="{Binding SaveInvoiceItemCommand}" CommandParameter="SaveInvoiceItemCommand" Margin="0 0 -2050 0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i1:CallMethodAction MethodName="Close"
+                           TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Invoice Number: " Width="Auto" FontSize="15" FontWeight="Bold" Margin="10 10 10 10" />
+            <Label Height="40" FontWeight="ExtraBold" Width="50" Foreground="Red" Opacity="0.8" Content="{Binding SelectedPurchaseInvoice.InvoiceNumber}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBlock Text="Purchase Date: " Width="Auto" FontSize="15" FontWeight="Bold" Margin="150 10 10 10" />
+            <Label Height="40" FontWeight="ExtraBold" Width="100" Foreground="Red" Content="{Binding SelectedPurchaseInvoice.PurchaseDate}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+            <TextBlock  Text="Supplier Name:" Width="Auto"  FontSize="15" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 10 10 10"/>
+
+            <Label Height="40" Width="163" Foreground="Red"  FontWeight="ExtraBold" Content="{Binding SelectedPurchaseInvoice.SupplierName}"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+
+            <TextBlock Text="Total Purchase Value: " Width="Auto" FontSize="15" FontWeight="Bold" Margin="60 10 10 10" />
+            <Label Height="40" Width="88" Foreground="Red"  FontWeight="ExtraBold" Content="{Binding SelectedPurchaseInvoice.TotalPurchaseValueOfInvoice}" 
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+        </StackPanel>
+
+        <Label Content="Purchase Invoice"  FontWeight="Bold" FontSize="19" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground='Purple'/>
+
+        <StackPanel Grid.Row="2">
+
+            <DataGrid  AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding View2 }" SelectedItem="{Binding SelectedPurchaseItem}" SelectionMode="Single"
+                      SelectionUnit='FullRow' ScrollViewer.VerticalScrollBarVisibility="Visible" Height="550" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item Code" Width="*" IsReadOnly="True" Binding="{Binding ItemCode}"/>
+                    <DataGridTextColumn Header="Item Name" Width="*"  IsReadOnly="True" Binding="{Binding Itemname}"/>
+                    <DataGridTextColumn Header="Stock In Hand" Width="*"  IsReadOnly="True" Binding="{Binding StockInHand}"/>
+
+                    <DataGridTextColumn Header="Purchase Pirce/Unit" Width="*" IsReadOnly="True" Binding="{Binding PurchasePricePerUnit, StringFormat=₹  {0:D}}"/>
+                    <DataGridTextColumn Header="Purchase Quantity" Width="*" IsReadOnly="True" Binding="{Binding PurchaseQuantity}"/>
+                    <DataGridTextColumn Header="Purchase Value" Width="*" IsReadOnly="True" Binding="{Binding TotalPurchaseValueByItemName, StringFormat=₹  {0:D}}"/>
+                    <DataGridTemplateColumn Header="Action" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content='Edit' FontWeight="Normal" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}},
+                                        Path=DataContext.JumpToUpdatePurchaseItem}" CommandParameter='JumpToUpdatePurchaseItem' />
+                                    <Separator Width="4" Background="Transparent"/>
+                                    <Button Content='Remove' FontWeight="Normal" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, 
+                                            Path=DataContext.RemovePurchaseItem}" CommandParameter='RemovePurchaseItem' />
+                                </StackPanel>
+                            </DataTemplate>
+
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Window>

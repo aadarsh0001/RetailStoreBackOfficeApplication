@@ -1,0 +1,63 @@
+﻿<Window x:Class="MyRetailStore.Views.Windows.UpdateUserView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:i='http://schemas.microsoft.com/expression/2010/interactivity'
+       xmlns:i1='http://schemas.microsoft.com/expression/2010/interactions'
+        xmlns:components='clr-namespace:MyRetailStore.Views.UserControlView'
+        xmlns:local="clr-namespace:MyRetailStore.Views.Windows"
+        mc:Ignorable="d" Topmost="True"
+        Title="Update User Details" Height="420" Width="370" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="32*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="Auto" Grid.ColumnSpan="2">
+
+            <Label Content="Full Name" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center"/>
+            <TextBox Width="300" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="Black" BorderThickness="2" Height="35" Text='{Binding SelectedUser.Name}' />
+
+            <Label Content="User Name" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" />
+            <TextBox Width="300" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="Black" BorderThickness="2" Height="35" Text='{Binding SelectedUser.Usrname}' />
+
+            <Label Content="Password" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Border Width="300" Height="35" BorderThickness="2" BorderBrush="Black" >
+                    <Grid>
+                        <components:BindablePasswordBox x:Name="passwordBox" Padding="2 5 2 5"  BorderBrush="Gray"  Password='{Binding SelectedUser.Password}' />
+                        <TextBox x:Name="passwordTxtBox"  Height="22" Width="269" VerticalContentAlignment="Center" Visibility="Collapsed" Margin="2 4 2 3"  HorizontalAlignment="Left"  BorderThickness="1"/>
+                        <Button Width="30" Background="Transparent" HorizontalAlignment="Right" IsTabStop="False" VerticalAlignment="Center" BorderThickness="0" Click="Show_Password"  Height="35" >
+                            <Image Source="/Images/icons8-eye-48.png" MouseLeave="Hide_Password" />
+
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+            <Label Content="Email" FontWeight="Bold" FontSize="16" Width="100" HorizontalContentAlignment="Center"/>
+            <TextBox Width="300" Background="Transparent" BorderThickness="2" BorderBrush="Black" VerticalContentAlignment="Center" Height="35" Text='{Binding SelectedUser.Email}' />
+
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Status" FontWeight="Bold" FontSize="16" Width="96" HorizontalContentAlignment="Center" />
+            <ComboBox Height="36" Width="300"  Margin="0,0,0,0" BorderThickness="2"    
+               Text='{Binding SelectedUser.isStatus, Mode=Default}' >
+                <ComboBoxItem Content="Active"/>
+                <ComboBoxItem Content="Inactive"/>
+            </ComboBox>
+
+            <Button Content="Save" Width="100" Height="35" FontSize="16" Margin="0 15" BorderThickness='2' BorderBrush='Black' Cursor='Hand' FontWeight="Bold" Command='{Binding SaveUpdateCommand}' CommandParameter=''>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i1:CallMethodAction MethodName="Close" TargetObject="{Binding RelativeSource={RelativeSource
+                                                  Mode=FindAncestor,
+                                                  AncestorType=Window}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>

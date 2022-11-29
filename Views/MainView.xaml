@@ -1,0 +1,253 @@
+﻿<Window x:Class="MyRetailStore.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
+        xmlns:viewmodels='clr-namespace:MyRetailStore.ViewModels'
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyRetailStore.Views.UserControlView" 
+        mc:Ignorable="d" WindowStyle="None" WindowState="Maximized" Title="Retail Store" Height="750" Width="1200" WindowStartupLocation='CenterScreen' Icon='/Images/retail.png'>
+
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource='/Images/benyafez-studio--4wZ0z7zqBY-unsplash.jpg' Opacity='0.8' />
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <!--// Menu Panel //-->
+
+        <StackPanel Background="#2E333A"
+                    Width="230"
+                    Orientation="Vertical"
+                    Grid.Column="0" Grid.RowSpan="2" >
+
+            <!--// Channel Name //-->
+
+            <Grid Height="50"
+                  VerticalAlignment="Top"
+                  Margin="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="52*"/>
+                    <ColumnDefinition Width="63*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Background="#D61734"
+                        Height="26"
+                        CornerRadius="3,0,0,3"
+                        Width="6"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left" Grid.Column="1" Margin="120,0,0,0" />
+
+                <TextBlock Text="R E T A I L   S T O R E"
+                           Foreground="#FFFFFF"
+                           FontFamily="Arial Black"
+                           FontSize="15"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="26,0,0,0" />
+
+            </Grid>
+
+            <!--// Main Menu //-->
+
+            <Menu Height="auto"
+                  Background="Transparent"
+                  Margin="0,40,0,0"
+                  Width="auto">
+
+                <Menu.ItemsPanel>
+
+                    <ItemsPanelTemplate>
+
+                        <VirtualizingStackPanel Orientation="Vertical" />
+
+                    </ItemsPanelTemplate>
+
+                </Menu.ItemsPanel>
+
+                <!--// Main Menu - Dashboard //-->
+
+                <MenuItem Header="Dashboard" 
+                         
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="DashBoard">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/img_home.png" />
+
+                    </MenuItem.Icon>
+
+                </MenuItem>
+
+                <!--// Main Menu - Store Details //-->
+
+                <MenuItem Header="Store Details" 
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="RetailStore">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-shop-64.png"/>
+
+                    </MenuItem.Icon>
+                </MenuItem>
+
+
+
+                <!--// Main Menu - Supplier //-->
+
+                <MenuItem Header="Supplier Details" 
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="SupplierManagement" >
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-supplier-48.png"/>
+
+                    </MenuItem.Icon>
+
+                </MenuItem>
+
+                <!--// Main Menu - Inventory //-->
+
+                <MenuItem Header="Inventory Record" 
+                          Template="{StaticResource Menu_SubMenu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="InventoryManagement">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-inventory-64.png"/>
+
+                    </MenuItem.Icon>
+
+                    <!--// Inventory Submenu - Item Category-->
+                    <MenuItem Header="Item Category" 
+                          Template="{StaticResource Item_Template}"
+                              Command="{Binding NavigateCommand}" CommandParameter="ItemCategory">
+                        <MenuItem.Icon>
+
+                            <Image Source="/Images/icons8-category-48.png"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--// Inventory Submenu - Create Item-->
+
+                    <MenuItem Header="Create Item" 
+                          Template="{StaticResource Item_Template}"
+                              Command="{Binding NavigateCommand}" CommandParameter="CreateItem">
+                        <MenuItem.Icon>
+
+                            <Image Source="/Images/icons8-add-new-48.png"/>
+
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                </MenuItem>
+
+
+
+                <!--// Main Menu - Purchase //-->
+
+                <MenuItem Header="Purchase Item"
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="PurchaseRecordManagement">
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-purchase-order-48.png"/>
+
+                    </MenuItem.Icon>
+
+                </MenuItem>
+
+                <!--// Main Menu - Sales //-->
+
+                <MenuItem Header="Item Sales"
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="SalesRecordManagement" >
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-total-sales-64.png"/>
+
+                    </MenuItem.Icon>
+
+                </MenuItem>
+
+                <!--// Main Menu - User Management //-->
+
+                <MenuItem Header="User Management"
+                          Template="{StaticResource Menu_Template}" 
+                          Command="{Binding NavigateCommand}" CommandParameter="UserManagement"  >
+
+                    <MenuItem.Icon>
+
+                        <Image Source="/Images/icons8-user-64.png"/>
+
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <!--// Main Menu - Exit //-->
+
+                <MenuItem Header="Exit"
+                          Template="{StaticResource Menu_Template}"
+                          Command="{Binding NavigateCommand}" CommandParameter="LogoutApp">
+
+                    <MenuItem.Icon>
+                        <Image Source="/Images/img_exit.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <ContentPresenter Content="{Binding ViewArea, Mode=Default, UpdateSourceTrigger=PropertyChanged}" Margin="0 10 0 0">
+
+            </ContentPresenter>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" Background="#2E333A">
+            <Button Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Cursor="Hand"
+                    BorderBrush="Transparent" ToolTip="Close Application"  Margin="0 5 10 0"
+                    Background="Transparent" Command="{Binding NavigateCommand}" CommandParameter="CloseApp">
+                <Image Source="/Images/shutdown_mo.png"    >
+                    <Image.Effect>
+                        <DropShadowEffect/>
+                    </Image.Effect>
+                </Image>
+
+            </Button>
+        </StackPanel>
+
+        <TextBlock Text=" W E L C O M E   T O    O U R   R E T A I L   S T O R E"
+                            Foreground="White"
+                           
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0"/>
+
+        <TextBlock Text="C O P Y R I G H T   @   2 0 2 2"
+                   Foreground="#525965"
+                   FontFamily="Orbitron Medium"
+                   FontSize="10"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,15,18" Grid.Column="1" Grid.Row="1"/>
+
+        <Border Background="#D61734"
+                Height="15"
+                CornerRadius="3,0,0,3"
+                Width="5"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,0,18" Grid.Column="1" Grid.Row="1"/>
+
+    </Grid>
+</Window>
